@@ -1,6 +1,8 @@
 // import { useEffect, useState } from 'react';
 import { Suspense } from 'react';
+// import { ErrorBoundary } from 'react-error-boundary';
 import { Heading } from '@/components/heading';
+// import { Placeholder } from '@/components/placeholder';
 import { Spinner } from '@/components/spinner';
 import { TicketList } from '@/features/ticket/components/ticket-list';
 
@@ -31,9 +33,15 @@ const TicketsPage = () => {
 
       {/* What wish to render later in a suspense boundary */}
       {/* suspend actions that are asynchronous to a later time */}
+      {/* By using a suspense boundary have more fine grained control over  */}
+      {/* where the spinner is showing up  */}
+
+      {/* More fine grained control with this error boundary component */}
+      {/* <ErrorBoundary fallback={<Placeholder label="something went wrong" />}> */}
       <Suspense fallback={<Spinner />}>
         <TicketList />
       </Suspense>
+      {/* </ErrorBoundary> */}
     </div>
   );
 };
