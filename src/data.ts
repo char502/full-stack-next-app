@@ -20,7 +20,7 @@ export const initialTickets = [
 ];
 
 // 'as const' limits the type and says 'DONE' and 'OPEN' are the only statuses in the object
-// now, 'status' is not a string any more (which couyld contain anything)
+// now, 'status' is not a string any more (which could contain anything)
 
 // These const assertions in the sample data, help us to narrow down the status type from a string
 // to a fixed set of options ('DONE', 'OPEN', and 'IN_PROGRESS')
