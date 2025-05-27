@@ -6,6 +6,29 @@ import { Heading } from '@/components/heading';
 import { Spinner } from '@/components/spinner';
 import { TicketList } from '@/features/ticket/components/ticket-list';
 
+// ==================================================================
+// Dynamic regeneration in Next.js
+// ==================================================================
+// Force Dynamic rendering
+// export const dynamic = 'force-dynamic';
+
+// Incremental static regeneration techniques in Next.js (time-based and on-demand)
+
+// (i.e. can have statically rendered page but have dynamic rendering behaviour in between)
+// ==================================================================
+// (Time-based caching)
+// ==================================================================
+// If want to revalidate every 30 seconds
+// called 'incremental static regeneration' in Next.js
+// If set to '0', Next.js will consider this dynamically rendered
+
+// export const revalidate = 38;
+
+// ==================================================================
+// On-demand caching
+// see 'delete ticket' action (update the page whenever a ticket is deleted)
+// ==================================================================
+
 // import { Ticket } from '@/features/ticket/types';
 
 const TicketsPage = () => {

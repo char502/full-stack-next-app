@@ -29,4 +29,16 @@ const TicketPage = async ({ params }: TicketPageProps) => {
   );
 };
 
+// generate static Id's for all the individual tickets
+// this would also require a revalidate (in the delete-ticket function)
+// if any of the tickets were deleted
+
+// export async function generateStaticParams() {
+//   const tickets = await getTickets();
+
+//   return tickets.map((ticket) => ({
+//     ticketId: ticket.id,
+//   }));
+// }
+
 export default TicketPage;
