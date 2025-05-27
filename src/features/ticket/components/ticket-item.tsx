@@ -1,10 +1,14 @@
 import { Ticket } from '@prisma/client';
 import clsx from 'clsx';
-import { LucideSquareArrowOutUpRight, LucideTrash } from 'lucide-react';
+import {
+  LucidePencil,
+  LucideSquareArrowOutUpRight,
+  LucideTrash,
+} from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ticketPath } from '@/paths';
+import { ticketEditPath, ticketPath } from '@/paths';
 import { deleteTicket } from '../actions/delete-ticket';
 import { TICKET_ICONS } from '../constants';
 
@@ -23,11 +27,19 @@ const TicketItem = async ({ ticket, isDetail }: TicketItemProps) => {
     </Button>
   );
 
+  const editButton = (
+    <Button variant="outline" size="icon" asChild>
+      <Link prefetch href={ticketEditPath(ticket.id)}>
+        <LucidePencil className="h-4 w-4" />
+      </Link>
+    </Button>
+  );
+
   // https://stackoverflow.com/questions/2236747/what-is-the-use-of-the-javascript-bind-method
   // Bind creates a new function that will force the 'this' inside the function to be the parameter passed to bind().
 
   // Using a form element you can pass in a server action
-  // bind only required in this situation of have to provide arguments for the server action function
+  // bind only required in this situation if have to provide arguments for the server action function
 
   const deleteButton = (
     <form action={deleteTicket.bind(null, ticket.id)}>
@@ -63,7 +75,17 @@ const TicketItem = async ({ ticket, isDetail }: TicketItemProps) => {
       </Card>
 
       <div className="flex flex-col gap-y-1">
-        {isDetail ? deleteButton : detailButton}
+        {isDetail ? (
+          <>
+            {editButton}
+            {deleteButton}
+          </>
+        ) : (
+          <>
+            {detailButton}
+            {editButton}
+          </>
+        )}
       </div>
     </div>
   );

@@ -4,7 +4,10 @@ import { Suspense } from 'react';
 import { Heading } from '@/components/heading';
 // import { Placeholder } from '@/components/placeholder';
 import { Spinner } from '@/components/spinner';
+import { CardCompact } from '@/components/ui/card-compact';
 import { TicketList } from '@/features/ticket/components/ticket-list';
+// import { TicketCreateForm } from '@/features/ticket/components/ticket-create-form';
+import { TicketUpsertForm } from '@/features/ticket/components/ticket-upsert-form';
 
 // ==================================================================
 // Dynamic regeneration in Next.js
@@ -53,6 +56,14 @@ const TicketsPage = () => {
     <div className="flex-1 flex flex-col gap-y-8">
       {/* Everything that can render initially is called streaming */}
       <Heading title="Tickets" description="All your tickets in one place" />
+
+      <CardCompact
+        title={'Create Ticket'}
+        description={'A new ticket will be created'}
+        className={'w-full max-w-[420px] self-center'}
+        // content={<TicketCreateForm />}
+        content={<TicketUpsertForm />}
+      />
 
       {/* What wish to render later in a suspense boundary */}
       {/* suspend actions that are asynchronous to a later time */}
