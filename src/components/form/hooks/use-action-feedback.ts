@@ -15,9 +15,9 @@ const useActionFeedback = (
   options: useActionFeedbackOptions
 ) => {
   const prevTimestamp = useRef(actionState.timestamp);
-  console.log(prevTimestamp);
+  // console.log(prevTimestamp);
   const isUpdate = prevTimestamp.current !== actionState.timestamp;
-  console.log(isUpdate);
+  // console.log(isUpdate);
 
   useEffect(() => {
     if (!isUpdate) return;
